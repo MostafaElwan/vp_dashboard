@@ -1,0 +1,182 @@
+{
+	"info": {
+		"_postman_id": "ae655657-0bf7-4050-8b8e-78215fe7dfc9",
+		"name": "VP Dashboard",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Fetch KPI",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8095/api/kpis/srvc_it_busns_trx",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8095",
+					"path": [
+						"api",
+						"kpis",
+						"srvc_it_busns_trx"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch All KPIs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8095/api/kpis",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8095",
+					"path": [
+						"api",
+						"kpis"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch History",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8095/api/kpis/history/srvc_it_busns_trx",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8095",
+					"path": [
+						"api",
+						"kpis",
+						"history",
+						"srvc_it_busns_trx"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Audit",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8095/api/kpis/audit/srvc_it_busns_trx",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8095",
+					"path": [
+						"api",
+						"kpis",
+						"audit",
+						"srvc_it_busns_trx"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create KPI",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"srvc_it_busns_trx\",\r\n    \"caption\": \"IT Business Transaction Modified\",\r\n    \"createdAt\": \"2021-02-07\",\r\n    \"createdBy\": \"elwan\",\r\n    \"keepAudit\": true,\t\t\t\r\n    \r\n    \"detailItems\": [\r\n        { \"title\": \"CRUST-CBU\", \"value\": \"12.1\"},\r\n        { \"title\": \"CRUST-EBU\", \"value\": \"18.0\"}\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8095/api/kpis",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8095",
+					"path": [
+						"api",
+						"kpis"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update KPI",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 2, \r\n    \"title\": \"srvc_it_busns_trx\",\r\n    \"caption\": \"IT Business Transaction Modified\",\r\n    \"createdAt\": \"2021-02-07\",\r\n    \"createdBy\": \"elwan\",\r\n    \"updatedAt\": \"2021-02-08\",\r\n    \"updatedBy\": \"ymansour\",\r\n    \"keepAudit\": true,\t\t\t\r\n    \r\n    \"detailItems\": [\r\n        { \"id\":1, \"title\": \"CRUST-CBU\", \"value\": \"12.1\"},\r\n        { \"id\":2, \"title\": \"CRUST-EBU\", \"value\": \"18.0\"}\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8095/api/kpis",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8095",
+					"path": [
+						"api",
+						"kpis"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Publish KPI",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 2, \r\n    \"title\": \"srvc_it_busns_trx\",\r\n    \"caption\": \"IT Business Transaction Modified\",\r\n    \"createdAt\": \"2021-02-07\",\r\n    \"createdBy\": \"elwan\",\r\n    \"updatedAt\": \"2021-02-07\",\r\n    \"updatedBy\": \"melwan\",\r\n    \"keepAudit\": true,\t\t\t\r\n    \r\n    \"detailItems\": [\r\n        { \"id\":1, \"title\": \"CRUST-CBU\", \"value\": \"12.1\"},\r\n        { \"id\":2, \"title\": \"CRUST-EBU\", \"value\": \"18.0\"}\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8095/api/kpis/publish",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8095",
+					"path": [
+						"api",
+						"kpis",
+						"publish"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
