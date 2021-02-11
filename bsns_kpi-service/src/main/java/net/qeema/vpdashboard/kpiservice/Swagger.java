@@ -22,15 +22,19 @@ public class Swagger {
 	@Bean
 	public Docket apiDocket() {
 
-		Contact contact = new Contact("Qeema", "https://github.com/MostafaElwan", "support@qeema.net");
+		Contact contact = new Contact("Qeema", "https://www.qeema.net/", "support@qeema.net");
 
 		List<VendorExtension> vendorExtensions = new ArrayList<>();
 
 		ApiInfo apiInfo = new ApiInfo("VP Dashboard Documentation", "This pages documents microservice endpoints", "1.0",
-				"https://github.com/MostafaElwan/vp_dashboard_demo", contact, "", "", vendorExtensions);
+				"https://www.qeema.net/", contact, "", "", vendorExtensions);
 
-		Docket docket = new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo).select()
-				.apis(RequestHandlerSelectors.basePackage("net.qeema")).paths(PathSelectors.any()).build();
+		Docket docket = new Docket(DocumentationType.SWAGGER_2)
+				.apiInfo(apiInfo)
+				.select()
+				.apis(RequestHandlerSelectors.basePackage("net.qeema.vpdashboard.kpiservice.api"))
+				.paths(PathSelectors.any())
+				.build();
 
 		return docket;
 
