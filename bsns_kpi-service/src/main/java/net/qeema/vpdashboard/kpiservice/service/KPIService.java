@@ -52,7 +52,7 @@ public class KPIService {
         
         KPI saved = kpiManager.saveKPI(kpi);
         historyManager.saveHistory(saved);
-        auditManager.addAudit(saved, "Updated");
+        auditManager.addAudit(saved, "Update");
 		
 		return saved;
     }
@@ -65,8 +65,8 @@ public class KPIService {
         kpi.setPublishDate(new Date());
 
         KPI saved = kpiManager.saveKPI(kpi);
-        historyManager.saveHistory(kpi);
-        auditManager.addAudit(kpi, "Publish");
+        historyManager.saveHistory(saved);
+        auditManager.addAudit(saved, "Publish");
 		
 		return saved;
     }
