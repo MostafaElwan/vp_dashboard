@@ -21,7 +21,7 @@ public class AuditManager {
     @Autowired
     private DetailedItemAuditRepository detailedItemAuditRepository;
     
-	public void addAudit(KPI kpi, String operation) {
+	public void save(KPI kpi, String operation) {
 		KPIAudit audit = KPIAudit.from(kpi);
 		audit.setOperation(operation);
 		auditRepository.save(audit);

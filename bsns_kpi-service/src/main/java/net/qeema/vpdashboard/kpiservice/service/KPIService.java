@@ -36,11 +36,15 @@ public class KPIService {
 	
 	@Transactional
 	public KPI create(KPI kpi) {
-		kpiManager.deleteKPI(kpi.getTitle());
+		KPI old = kpiManager.get(kpi.getTitle());
+		if(old != null)
+		kpiManager.delete(old);
 
-		KPI saved = kpiManager.saveKPI(kpi);
-        historyManager.saveHistory(saved);
-        auditManager.addAudit(saved, "Insert");
+		KPI saved = kpiManager.save(kpi);
+        historyManager.save(saved);
+        
+        if(saved.getKeepAudit())
+        	auditManager.save(saved, "Insert");
 		
         return saved;
     }
@@ -50,9 +54,11 @@ public class KPIService {
         if (!kpiManager.exist(kpi.getId())) 
             throw new Exception("Cannot find a kpi with id: " + kpi.getId());
         
-        KPI saved = kpiManager.saveKPI(kpi);
-        historyManager.saveHistory(saved);
-        auditManager.addAudit(saved, "Update");
+        KPI saved = kpiManager.save(kpi);
+        historyManager.save(saved);
+        
+        if(saved.getKeepAudit())
+        	auditManager.save(saved, "Update");
 		
 		return saved;
     }
@@ -64,9 +70,11 @@ public class KPIService {
 
         kpi.setPublishDate(new Date());
 
-        KPI saved = kpiManager.saveKPI(kpi);
-        historyManager.saveHistory(saved);
-        auditManager.addAudit(saved, "Publish");
+        KPI saved = kpiManager.save(kpi);
+        historyManager.save(saved);
+        
+        if(saved.getKeepAudit())
+        	auditManager.save(saved, "Publish");
 		
 		return saved;
     }

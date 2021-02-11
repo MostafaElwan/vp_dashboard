@@ -19,6 +19,10 @@ public class KPIManager {
     
     @Autowired
     private DetailedItemRepository detailedItemRepository;
+
+    public boolean exist(Long id) {
+  	  return kpiRepository.existsById(id);
+  	}
     
     public List<KPI> getAll() {
     	List<KPI> kpis = new ArrayList<KPI>();
@@ -27,15 +31,11 @@ public class KPIManager {
     	return kpis;
     }
     
-  public boolean exist(Long id) {
-	  return kpiRepository.existsById(id);
-	}
-    
     public KPI get(String title) {
         return kpiRepository.findByTitle(title);
     }
     
-	public KPI saveKPI(KPI kpi) {
+	public KPI save(KPI kpi) {
 		KPI saved = kpiRepository.save(kpi);
         List<DetailItem> details = kpi.getDetailItems();
         for(DetailItem di : details) {
@@ -45,16 +45,13 @@ public class KPIManager {
         return saved;
 	}
 	
-	public void deleteKPI(String title) {
-		KPI old = kpiRepository.findByTitle(title);
-		if(old != null) {
-			List<DetailItem> details = old.getDetailItems();
-	        for(DetailItem di : details) {
-	        	di.setKpi(old);
-	        	detailedItemRepository.delete(di);
-	        }
-			kpiRepository.delete(old);
-		}
+	public void delete(KPI kpi) {
+		List<DetailItem> details = kpi.getDetailItems();
+        for(DetailItem di : details) {
+        	di.setKpi(kpi);
+        	detailedItemRepository.delete(di);
+        }
+		kpiRepository.delete(kpi);
 	}
 
 }

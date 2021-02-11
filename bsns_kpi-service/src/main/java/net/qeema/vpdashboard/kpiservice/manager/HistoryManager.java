@@ -22,7 +22,7 @@ public class HistoryManager {
     @Autowired
     private DetailedItemHistoryRepository detailedItemHistoryRepository;
     
-	public void saveHistory(KPI kpi) {
+	public void save(KPI kpi) {
 		KPIHistory history = KPIHistory.from(kpi);
         KPIHistory savedHistory = historyRepository.save(history);
         
