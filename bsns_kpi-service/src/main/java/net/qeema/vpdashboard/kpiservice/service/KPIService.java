@@ -7,12 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import net.qeema.vpdashboard.kpiservice.domain.KPI;
-import net.qeema.vpdashboard.kpiservice.domain.KPIAudit;
-import net.qeema.vpdashboard.kpiservice.domain.KPIHistory;
 import net.qeema.vpdashboard.kpiservice.manager.AuditManager;
 import net.qeema.vpdashboard.kpiservice.manager.HistoryManager;
 import net.qeema.vpdashboard.kpiservice.manager.KPIManager;
+import net.qeema.vpdashboard.kpiservice.model.AuditOperation;
+import net.qeema.vpdashboard.kpiservice.model.domain.KPI;
+import net.qeema.vpdashboard.kpiservice.model.domain.KPIAudit;
+import net.qeema.vpdashboard.kpiservice.model.domain.KPIHistory;
  
 @Service
 public class KPIService {
@@ -44,7 +45,7 @@ public class KPIService {
         historyManager.save(saved);
         
         if(saved.getKeepAudit())
-        	auditManager.save(saved, "Insert");
+        	auditManager.save(saved, AuditOperation.CREATE);
 		
         return saved;
     }
@@ -58,23 +59,7 @@ public class KPIService {
         historyManager.save(saved);
         
         if(saved.getKeepAudit())
-        	auditManager.save(saved, "Update");
-		
-		return saved;
-    }
-    
-    @Transactional
-    public KPI publish(KPI kpi) throws Exception {
-        if (!kpiManager.exist(kpi.getId())) 
-            throw new Exception("Cannot find a kpi with id: " + kpi.getId());
-
-        kpi.setPublishDate(new Date());
-
-        KPI saved = kpiManager.save(kpi);
-        historyManager.save(saved);
-        
-        if(saved.getKeepAudit())
-        	auditManager.save(saved, "Publish");
+        	auditManager.save(saved, AuditOperation.UPDATE);
 		
 		return saved;
     }

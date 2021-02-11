@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import net.qeema.vpdashboard.kpiservice.domain.DetailItem;
-import net.qeema.vpdashboard.kpiservice.domain.KPI;
+import net.qeema.vpdashboard.kpiservice.model.domain.DetailItem;
+import net.qeema.vpdashboard.kpiservice.model.domain.KPI;
 import net.qeema.vpdashboard.kpiservice.repository.DetailedItemRepository;
 import net.qeema.vpdashboard.kpiservice.repository.KPIRepository;
 

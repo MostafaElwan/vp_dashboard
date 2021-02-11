@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import net.qeema.vpdashboard.kpiservice.api.KPIOperations;
-import net.qeema.vpdashboard.kpiservice.domain.KPI;
-import net.qeema.vpdashboard.kpiservice.domain.KPIAudit;
-import net.qeema.vpdashboard.kpiservice.domain.KPIHistory;
+import net.qeema.vpdashboard.kpiservice.model.domain.KPI;
+import net.qeema.vpdashboard.kpiservice.model.domain.KPIAudit;
+import net.qeema.vpdashboard.kpiservice.model.domain.KPIHistory;
 import net.qeema.vpdashboard.kpiservice.service.KPIService;
 
 @RestController
@@ -76,15 +76,6 @@ public class KPIController implements KPIOperations {
 		KPI updated = kpiService.update(kpi);
 		
 		logger.info("updateKPI finished successfully");
-		return updated;
-	}
-	
-	public KPI publishKPI(@RequestBody KPI kpi) throws Exception {
-		logger.info("publishKPI just started ...");
-		
-		KPI updated = kpiService.publish(kpi);
-		
-		logger.info("publishKPI finished successfully");
 		return updated;
 	}
 	

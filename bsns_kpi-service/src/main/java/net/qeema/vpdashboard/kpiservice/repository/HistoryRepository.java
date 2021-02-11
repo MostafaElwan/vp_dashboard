@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
-import net.qeema.vpdashboard.kpiservice.domain.KPIHistory;
+import net.qeema.vpdashboard.kpiservice.model.domain.KPIHistory;
  
 public interface HistoryRepository 
 	extends PagingAndSortingRepository<KPIHistory, Long>, JpaSpecificationExecutor<KPIHistory> {

@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import net.qeema.vpdashboard.kpiservice.domain.KPI;
-import net.qeema.vpdashboard.kpiservice.domain.KPIAudit;
-import net.qeema.vpdashboard.kpiservice.domain.KPIHistory;
+import net.qeema.vpdashboard.kpiservice.model.domain.KPI;
+import net.qeema.vpdashboard.kpiservice.model.domain.KPIAudit;
+import net.qeema.vpdashboard.kpiservice.model.domain.KPIHistory;
 
 @Api(tags = { "KPI operations" })
 public interface KPIOperations {
@@ -40,9 +40,5 @@ public interface KPIOperations {
 	@ApiOperation("Uodates the specified KPI which is being passed into the request body")
 	@PutMapping(value = {""})
 	public KPI updateKPI(@RequestBody KPI kpi) throws Exception;
-	
-	@ApiOperation("Publishes the passed KPI to display its values")
-	@PutMapping(value = {"/publish"})
-	public KPI publishKPI(@RequestBody KPI kpi) throws Exception;
-	
+		
 }

@@ -5,10 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import net.qeema.vpdashboard.kpiservice.domain.DetailItem;
-import net.qeema.vpdashboard.kpiservice.domain.DetailItemAudit;
-import net.qeema.vpdashboard.kpiservice.domain.KPI;
-import net.qeema.vpdashboard.kpiservice.domain.KPIAudit;
+import net.qeema.vpdashboard.kpiservice.model.AuditOperation;
+import net.qeema.vpdashboard.kpiservice.model.domain.DetailItem;
+import net.qeema.vpdashboard.kpiservice.model.domain.DetailItemAudit;
+import net.qeema.vpdashboard.kpiservice.model.domain.KPI;
+import net.qeema.vpdashboard.kpiservice.model.domain.KPIAudit;
 import net.qeema.vpdashboard.kpiservice.repository.AuditRepository;
 import net.qeema.vpdashboard.kpiservice.repository.DetailedItemAuditRepository;
 
@@ -21,9 +22,9 @@ public class AuditManager {
     @Autowired
     private DetailedItemAuditRepository detailedItemAuditRepository;
     
-	public void save(KPI kpi, String operation) {
+	public void save(KPI kpi, AuditOperation operation) {
 		KPIAudit audit = KPIAudit.from(kpi);
-		audit.setOperation(operation);
+		audit.setOperation(operation.toString());
 		auditRepository.save(audit);
 		
 		List<DetailItem> details = kpi.getDetailItems();

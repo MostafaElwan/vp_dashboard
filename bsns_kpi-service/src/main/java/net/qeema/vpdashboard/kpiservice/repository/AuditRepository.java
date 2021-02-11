@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
-import net.qeema.vpdashboard.kpiservice.domain.KPIAudit;
+import net.qeema.vpdashboard.kpiservice.model.domain.KPIAudit;
  
 public interface AuditRepository 
 	extends PagingAndSortingRepository<KPIAudit, Long>, JpaSpecificationExecutor<KPIAudit> {
